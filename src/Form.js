@@ -127,7 +127,7 @@ export default class Form extends Base {
    */
   onSubmit = (e, o = {}) => {
     e.preventDefault();
-    this.submit(o);
+    return this.submit(o);
   };
 }
 
@@ -192,7 +192,7 @@ export const prototypes = {
     const onSuccess = o.onSuccess || this.onSuccess || noop;
     const onError = o.onError || this.onError || noop;
 
-    this.validate()
+    return this.validate()
       .then(isValid => isValid
         ? onSuccess.apply(this, [this])
         : onError.apply(this, [this]));

@@ -13,6 +13,18 @@ describe('Form submit() decoupled callback', () => {
     });
   });
 
+  // $I
+  it('$I.submit() should return a promise fulfilled with the return of onSuccess callback', () => {
+    const foo = $.$I.submit({
+      onSuccess: () => 'bar',
+    });
+
+    return foo
+      .then((v) => {
+        expect(v).to.equal('bar');
+      });
+  });
+
   // $N
   it('$N.submit() should call onError callback on invalid form', (done) => {
     $.$N.submit({
